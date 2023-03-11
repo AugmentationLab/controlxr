@@ -23,9 +23,9 @@ public class HandTracking : MonoBehaviour
 
     void Start()
     {
-        stream = new SerialPort("COM4", 9600);
-        stream.ReadTimeout = 50;
-        stream.Open();
+        // stream = new SerialPort("COM4", 9600);
+        // stream.ReadTimeout = 50;
+        // stream.Open();
     }
 
     void Update()
@@ -62,14 +62,12 @@ public class HandTracking : MonoBehaviour
             for (int i = 0; i < joints.Length; i++)
             {
                 // if (i == 3 || i == 5 || i == 10) {
-                    debug("Joint #" + i + " Position: " + joints[i].transform.position);
+                    // debug("Joint #" + i + " Position: " + joints[i].transform.position);
                     points.Add(joints[i].transform.position);
-                    stream.WriteLine(command);
-                    stream.BaseStream.Flush();
                 // }
             }
-            debug("points: " + string.Join(", ", points.Select(p => p.ToString()).ToArray()));
-            debug(points.Count.ToString());
+            // debug("points: " + string.Join(", ", points.Select(p => p.ToString()).ToArray()));
+            // debug(points.Count.ToString());
 
         }
 
