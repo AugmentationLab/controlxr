@@ -7,12 +7,10 @@ using Unity.Collections;
 using Unity.XR.CoreUtils;
 using UnityEngine.XR.Management;
 using UnityEngine.XR.Hands.Samples.VisualizerSample;
-using System.IO.Ports;
 
 public class HandTracking : MonoBehaviour
 {
-    public SerialPort stream;
-    public string command = "010000";
+
     public GameManager gameManager;
 
     public HandVisualizer handVisualizer;
@@ -23,9 +21,7 @@ public class HandTracking : MonoBehaviour
 
     void Start()
     {
-        // stream = new SerialPort("COM4", 9600);
-        // stream.ReadTimeout = 50;
-        // stream.Open();
+
     }
 
     void Update()
@@ -61,13 +57,11 @@ public class HandTracking : MonoBehaviour
             points = new List<Vector3>();
             for (int i = 0; i < joints.Length; i++)
             {
-                // if (i == 3 || i == 5 || i == 10) {
-                    // debug("Joint #" + i + " Position: " + joints[i].transform.position);
-                    points.Add(joints[i].transform.position);
-                // }
+                debug("Joint #" + i + " Position: " + joints[i].transform.position);
+                points.Add(joints[i].transform.position);
             }
-            // debug("points: " + string.Join(", ", points.Select(p => p.ToString()).ToArray()));
-            // debug(points.Count.ToString());
+            debug("points: " + string.Join(", ", points.Select(p => p.ToString()).ToArray()));
+            debug(points.Count.ToString());
 
         }
 
